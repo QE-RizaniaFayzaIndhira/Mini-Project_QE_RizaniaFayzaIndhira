@@ -40,7 +40,11 @@ public class registerPage extends PageObject {
     }
 
     @Step
-    public void inputValidEmailForRegister(String email_register){
+    public void inputValidEmailForRegister(){
+        int min = 1;
+        int max = 1000000;
+        int number = (int)Math.floor(Math.random() * (max - min + 1) + min);
+        String email_register = "raka" + String.valueOf(number) + "@gmail.com";
         $(emailRegisterField()).type(email_register);
     }
 

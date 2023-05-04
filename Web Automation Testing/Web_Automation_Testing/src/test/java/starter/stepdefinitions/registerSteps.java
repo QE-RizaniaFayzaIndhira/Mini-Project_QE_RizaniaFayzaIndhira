@@ -30,7 +30,7 @@ public class registerSteps {
 
     @And("user input valid email for register")
     public void userInputValidEmailForRegister() {
-        registerpage.inputValidEmailForRegister("raka@gmail.com");
+        registerpage.inputValidEmailForRegister();
     }
 
     @And("user input valid password for register")

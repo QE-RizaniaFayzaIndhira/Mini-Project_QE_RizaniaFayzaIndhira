@@ -10,7 +10,27 @@ public class cartPage extends PageObject {
     }
 
     private By productInCartTitle(){
-        return By.xpath("//*[@id=\"order-11310\"]/div[1]/div[1]");
+        return By.xpath("//*[@id=\"order-12892\"]/div[1]/div[1]");
+    }
+
+    private By plusIcon(){
+        return By.xpath("//span[text()='+']");
+    }
+
+    private By minIcon(){
+        return By.xpath("//span[text()='-']");
+    }
+
+    private By quantityProduct(){
+        return By.id("label-total-quantity");
+    }
+
+    private By productEmptyTitle(){
+        return By.xpath("//div[text()=' Order is empty! ']");
+    }
+
+    private By bayarButton(){
+        return By.xpath("//span[text()=' Bayar ']");
     }
 
     @Step
@@ -21,5 +41,34 @@ public class cartPage extends PageObject {
     @Step
     public void seeProductInCart(){
         $(productInCartTitle()).isDisplayed();
+    }
+
+    @Step
+    public void onCartPage(){
+        $(productInCartTitle()).isDisplayed();
+    }
+
+    @Step
+    public void clickPlusIcon(){
+        $(plusIcon()).click();
+    }
+    @Step
+    public void clickMinIcon(){
+        $(minIcon()).click();
+    }
+
+    @Step
+    public void seeQuantityProduct(){
+        $(quantityProduct()).isDisplayed();
+    }
+
+    @Step
+    public void seeProductEmptyTitle(){
+        $(productEmptyTitle()).isDisplayed();
+    }
+
+    @Step
+    public void clickBayarButton(){
+        $(bayarButton()).click();
     }
 }
