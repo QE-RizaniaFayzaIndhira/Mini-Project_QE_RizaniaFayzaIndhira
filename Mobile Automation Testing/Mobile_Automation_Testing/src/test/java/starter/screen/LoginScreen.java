@@ -8,25 +8,30 @@ import test.automation.pageobject.BasePageObject;
 
 public class LoginScreen extends BasePageObject {
     private By emailField(){
-        return AppiumBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]");
+        return AppiumBy.xpath("//android.widget.EditText[@text='Email']");
     }
 
     private By passwordField(){
-        return AppiumBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]");
+        return AppiumBy.xpath("//android.widget.EditText[@text='Password']");
     }
 
     private By loginButton(){
-        return AppiumBy.xpath("//android.widget.Button[@content-desc=\"Login\"]");
+        return AppiumBy.xpath("//android.widget.Button[@content-desc='Login']");
     }
 
     @Step
-    public void onLoginScreen(){
-        Assert.assertTrue(waitUntilVisible(loginButton()).isDisplayed());
+    public void clickEmailField(){
+        onClick(emailField());
     }
 
     @Step
     public void inputValidEmail(String email){
         onType(emailField(), email);
+    }
+
+    @Step
+    public void clickPasswordField(){
+        onClick(passwordField());
     }
 
     @Step

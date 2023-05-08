@@ -25,12 +25,17 @@ public class LoginSteps {
         productScreen.clickLogoutButton();
     }
 
-    @And("user on login screen")
-    public void userOnLoginScreen() {
-        loginScreen.onLoginScreen();
+    @When("user click email field")
+    public void userClickEmailField() {
+        loginScreen.clickEmailField();
     }
 
-    @When("user input valid email")
+    @And("user click password field")
+    public void userClickPasswordField() {
+        loginScreen.clickPasswordField();
+    }
+
+    @And("user input valid email")
     public void userInputValidEmail() {
         loginScreen.inputValidEmail("riza@gmail.com");
     }
@@ -49,6 +54,4 @@ public class LoginSteps {
     public void userOnProductScreenSuccessfully() {
         productScreen.onProductPageSuccessfully();
     }
-
-
 }
