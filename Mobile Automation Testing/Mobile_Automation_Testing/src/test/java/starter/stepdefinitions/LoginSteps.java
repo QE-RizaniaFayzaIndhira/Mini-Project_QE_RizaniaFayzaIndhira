@@ -9,20 +9,16 @@ import starter.screen.LoginScreen;
 import starter.screen.ProductScreen;
 
 public class LoginSteps {
-    @Steps
-    ProductScreen productScreen;
 
     @Steps
     LoginScreen loginScreen;
 
-    @Given("user on product screen")
-    public void userOnProductScreen() {
-        productScreen.onProductScreen();
-    }
+    @Steps
+    ProductScreen productScreen;
 
-    @And("user click logout button")
-    public void userClickLogoutButton() {
-        productScreen.clickLogoutButton();
+    @Given("user on login screen")
+    public void userOnLoginScreen() {
+        loginScreen.OnLoginScreen();
     }
 
     @When("user click email field")
@@ -53,5 +49,46 @@ public class LoginSteps {
     @Then("user on product screen successfully")
     public void userOnProductScreenSuccessfully() {
         productScreen.onProductPageSuccessfully();
+    }
+
+    @And("user input empty password")
+    public void userInputEmptyPassword() {
+        loginScreen.inputValidPassword("");
+    }
+
+    @Then("user see error message {string}")
+    public void userSeeErrorMessage(String arg0) {
+        loginScreen.getErrorMessageEmptyPassword();
+    }
+
+    @And("user input empty email")
+    public void userInputEmptyEmail() {
+        loginScreen.inputValidEmail("");
+    }
+
+    @Then("user view error message {string}")
+    public void userViewErrorMessage(String arg0) {
+        loginScreen.getErrorMessageEmptyEmail();
+    }
+
+    @Then("user view error message {string} and {string}")
+    public void userViewErrorMessageAnd(String arg0, String arg1) {
+        loginScreen.getErrorMessageEmptyEmail();
+        loginScreen.getErrorMessageEmptyPassword();
+    }
+
+    @And("user input invalid email")
+    public void userInputInvalidEmail() {
+        loginScreen.inputInvalidEmail("rizania@gmail.com");
+    }
+
+    @Then("user can see error message {string}")
+    public void userCanSeeErrorMessage(String arg0) {
+        loginScreen.getErrorMessage();
+    }
+
+    @And("user input invalid password")
+    public void userInputInvalidPassword() {
+        loginScreen.inputInvalidPassword("rizania123");
     }
 }

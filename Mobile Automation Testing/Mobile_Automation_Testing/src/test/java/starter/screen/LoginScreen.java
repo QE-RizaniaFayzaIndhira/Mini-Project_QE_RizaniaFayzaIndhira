@@ -7,6 +7,11 @@ import org.openqa.selenium.By;
 import test.automation.pageobject.BasePageObject;
 
 public class LoginScreen extends BasePageObject {
+
+    private By loginIcon() {
+        return AppiumBy.xpath("//android.view.View[@content-desc='Products']/following-sibling::android.widget.Button");
+    }
+
     private By emailField(){
         return AppiumBy.xpath("//android.widget.EditText[@text='Email']");
     }
@@ -17,6 +22,24 @@ public class LoginScreen extends BasePageObject {
 
     private By loginButton(){
         return AppiumBy.xpath("//android.widget.Button[@content-desc='Login']");
+    }
+
+    private By errorMessageEmptyEmail(){
+        return AppiumBy.xpath("//android.view.View[@content-desc='email can not empty']");
+    }
+
+    private By errorMessageEmptyPassword(){
+        return AppiumBy.xpath("//android.view.View[@content-desc='password can not empty']");
+    }
+
+    private By errorMessage(){
+        return AppiumBy.xpath("//android.view.View[@content-desc='Email atau password tidak valid.']");
+    }
+
+    @Step
+    public void OnLoginScreen(){
+        onClick(loginIcon());
+        Assert.assertTrue(waitUntilVisible(loginButton()).isDisplayed());
     }
 
     @Step
@@ -42,5 +65,30 @@ public class LoginScreen extends BasePageObject {
     @Step
     public void clickLoginButton(){
         onClick(loginButton());
+    }
+
+    @Step
+    public boolean getErrorMessageEmptyEmail() {
+        return waitUntilVisible(errorMessageEmptyEmail()).isDisplayed();
+    }
+
+    @Step
+    public boolean getErrorMessageEmptyPassword() {
+        return waitUntilVisible(errorMessageEmptyPassword()).isDisplayed();
+    }
+
+    @Step
+    public void inputInvalidEmail(String email){
+        onType(emailField(), email);
+    }
+
+    @Step
+    public void inputInvalidPassword(String password){
+        onType(passwordField(), password);
+    }
+
+    @Step
+    public boolean getErrorMessage() {
+        return waitUntilVisible(errorMessage()).isDisplayed();
     }
 }
