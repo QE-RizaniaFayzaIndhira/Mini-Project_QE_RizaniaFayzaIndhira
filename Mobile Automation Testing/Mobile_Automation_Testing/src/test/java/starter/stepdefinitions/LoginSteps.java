@@ -48,7 +48,7 @@ public class LoginSteps {
 
     @Then("user on product screen successfully")
     public void userOnProductScreenSuccessfully() {
-        productScreen.onProductPageSuccessfully();
+        productScreen.onProductScreenSuccessfully();
     }
 
     @And("user input empty password")
